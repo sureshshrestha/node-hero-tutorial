@@ -1,0 +1,22 @@
+{
+  "name": "node-hero-tutorial",
+  "version": "1.0.0",
+  "description": "node-hero-tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ys"
+  },
+  "keywords": [
+    "node-hero-tutorial",
+    "node",
+    "nodejs",
+    "js"
+  ],
+  "author": "Suresh Shrestha",
+  "license": "ISC"
+}
