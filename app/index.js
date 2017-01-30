@@ -1,35 +1,20 @@
-const calc = require('./calc')
-const _ = require('lodash')
-const fs = require('fs')
+// index.js
+const path = require('path')  
+const express = require('express')  
+const exphbs = require('express-handlebars')
 
-_.assign({ 'a': 1}, {'b': 2}, {'c': 3});
+const app = express()
 
-const numbersToAdd = [
-	3,
-	4,
-	10,
-	2
-]
+app.engine('.hbs', exphbs({  
+  defaultLayout: 'main',
+  extname: '.hbs',
+  layoutsDir: path.join(__dirname, 'views/layouts')
+}))
+app.set('view engine', '.hbs')  
+app.set('views', path.join(__dirname, 'views'))
 
-const result = calc.sum(numbersToAdd)
-console.log(`This result is: ${result}`)
-
-function stats (file) {
-    return new Promise((resolve, reject) => {
-	fs.stat(file,(err, data) => {
-	    if (err) {
-		return reject (err)
-            }
-	    resolve(data)
-    })
+app.get('/', (request, response) => {  
+  response.render('home', {
+    name: 'John'
+  })
 })
-
-}
-
-Promise.all([
-  stats('file1'),
-  stats('file2'),
-  stats('file3')
-])
-.then((data) => console.log(data))
-.catch((err) => console.log(err))
